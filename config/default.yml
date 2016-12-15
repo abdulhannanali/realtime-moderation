@@ -1,0 +1,13 @@
+# Default keys are here, Replace the default values 
+# with your keys in order to run your application
+# We use these keys using the help of `npm` module called `config`
+# Check out the tutorial in order to learn more on how to get these keys
+pusher:
+    appId: "{YOUR_APP_ID_HERE}"
+    appKey: "{YOUR_APP_KEY_HERE}"
+    appSecret: "{YOUR_APP_SECRET_HERE}"
+clarifai:
+    clientId: "{YOUR_CLIENT_ID_HERE}"
+    clientSecret: "{YOUR_CLIENT_SECRET_HERE}"
+port: 4000
+host: 0.0.0.0
