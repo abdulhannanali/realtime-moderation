@@ -75,9 +75,9 @@ Afterwards, run a `npm start` in order to start your application on the default 
 The server side is required for the Clarifai to analyze images, submit the images, as well as trigger the 
 events using Pusher, as Pusher doesn't let us trigger events from client side (at least Public events), because of legitimate security risks
 
-- Submit imageUrl using an Express Server for the Clarifai
-- Analyze images using Clarifai and detect Cat in the image
-- Based on the predictions trigger events using Pusher for the Client Side
+- Submit an image's url to an Express Server
+- Analyze images using Clarifai and detect cat in the image
+- Based on the predictions trigger events using Pusher for the client Side
 
 #### Client Side Functionalities
 
@@ -88,7 +88,18 @@ Pusher JavaScript API provides us with abilities to bind to events on specific c
 - Bind to the Pusher events and receive data regarding the cats
 
 #### Future planned features
-This is just a first step in the realtime moderation applications, the functionality of this application can be extended in many creative ways, part of the reason, it's so simple in the features from,
+This is just a first step in the realtime moderation applications, the functionality of this application can be extended in many creative ways, part of the reason, it doesn't have many features is, I intended for it to be a full fledge tutorial at first, but then changed it to a form of example, afraid of making it too complex than it should be. Some of the features I have on top of my mind are detailed blow, so if anyone wants to work on them, that'd be awesome.
+
+##### - JavaScript Push Notifications
+Push notifications are a crucial part of the Realtime application, and let's the application convey important events
+to the users, even when they are away from the application, Firebase Cloud Messaging (FCM) allows the users to send the push notifications in Chrome and Firebase, even when they are not on the sites. The push notifications for web applications can be implemented for realtime-moderation, implementation might get annoying, as a new cat image, can be sent very frequiently, but we can modify the server side to send the push notification once in a while in that case, instead of very frequently.
+
+ 
+##### - Multi Channel Support
+The multi channel support can allow us to filter, what type of image, we want to listen for depending on the channel and type of the event, increasing the usecases of this applications. One common flow through this, can be an `input` in order to enter concept and a `button`, so we can subscribe to the channel for a concept, when the button is pressed. 
+
+##### Database persistence, for previous realtime data
+Database persistence, allows us to provide context to the users, that have missed the previous events, but just encountered this one event, One such use case can be to send the list of the previous images or atleast the last image, that was identified for instance as Cat, allowing us to expand the use cases, we already have. It's also really important, as users don't lose their entire realtime Twitter or Fb feed, once they go through it, it's there so they can come back.
 
 
 #### LICENSE
