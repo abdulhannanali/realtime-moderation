@@ -62,13 +62,24 @@ Afterwards, run a `npm start` in order to start your application on the default 
 
 
 ### Complete Architecture Overview
-![Architecuture of Realtime Moderation Application](data/architecture.svg)
+![Architecuture of Realtime Moderation Application](demoData/architecture.svg)
 
 #### Server Side Functionalities
-**TBD**
+
+The server side is required for the Clarifai to analyze images, submit the images, as well as trigger the 
+events using Pusher, as Pusher doesn't let us trigger events from channels, because of legitimate security risks
+
+- Submit imageUrl using an Express Server for the Clarifai
+- Analyze images using Clarifai and detect Cat in the image
+- Based on the predictions trigger events using Pusher for the Client Side
 
 #### Client Side Functionalities
-**TBD**
+
+Pusher JavaScript API provides us with abilities to bind to events on specific channels, making true real time applications possible, and in a Component based site, this can have different components subscribed to different channels however, in this client side, application, till now, the Client Side provides with the following functions, which are standard for any simple Web UI. 
+
+- Let the user send a `POST` request to submit images to the Pusher
+- Provide the user with helpful feedback in the form of notifications and Cards,
+- Bind to the Pusher events and receive data regarding the cats
 
 #### LICENSE
 MIT License. See [LICENSE](LICENSE) for more details
