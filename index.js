@@ -32,10 +32,17 @@ app.use(bodyParser.urlencoded({extended: true}))
  * Serving the Client Side files
  * These files can be served separately with out the need of the server too
  */
-app.use(express.static('../client'))
+app.use(express.static('./public'))
 
-// Route for submitting a cat url to identify the cat
-// and triggering an event
+/**
+ * Route for submitting a cat url to identify the cat
+ * We send a post request with following things in the body
+ * - url
+ * - socketId
+ * 
+ * The response for every request is 200,
+ * Clarifai related moderation data is sent using Pusher
+ */
 app.post('/cat', function (req, res, next) {
     const imageUrl  = req.body.url
     const addedAt   = (new Date ()).toISOString()
@@ -43,15 +50,11 @@ app.post('/cat', function (req, res, next) {
 
     if (imageUrl) {
         identifyAndTrigger({ imageUrl, addedAt, socketId })
-            .then(function (isCat) {
-                res.json({ isCat, added_at: addedAt, socketId })
-            })
-            .catch(function (error) {
-                next(error)
-            })
     } else {
         next(new Error('valid `imageUrl` not provided'))
     }
+
+    res.send(200)
 })
 
 /**
@@ -65,17 +68,18 @@ app.post('/cat', function (req, res, next) {
 function identifyAndTrigger ({ imageUrl, addedAt, socketId }) {
     // identify the Cat Image using `identifyCatImage` function with the help of Clarifai
     return identifyCatImage(imageUrl)
-        .then(function (isCat) {
+        .then(function ({isCat, concepts}) {
             if (isCat) {
                 // Triggering a `NEW_CAT_EVENT` on CAT_CHANNEL
                 console.log('Cat identified, trigger an event ' + imageUrl)
 
                 // Trigger an event for the pusher here if cat found
-                // and passing the url of the cat
+                // and pass the relevant data
                 pusherApp.trigger(CAT_CHANNEL, NEW_CAT_EVENT, {
                     url: imageUrl,
                     added_at: addedAt,
-                    socketId
+                    socketId,
+                    concepts
                 })
 
                 console.log('+TRIGGGGERRRED')                
@@ -83,10 +87,12 @@ function identifyAndTrigger ({ imageUrl, addedAt, socketId }) {
                 console.log('Cat not identified, trigger an event ' + imageUrl)
 
                 // Trigger a `NOT_CAT_EVENT` in `CAT_CHANNEL` if Cat Not Found
+                // As well as pass the relevant data
                 pusherApp.trigger(CAT_CHANNEL, NOT_CAT_EVENT, {
                     url: imageUrl,
                     added_at: addedAt,
-                    socketId
+                    socketId,
+                    concepts
                 })
 
                 console.log('-TRIGGGGERRRED')
