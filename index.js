@@ -1,6 +1,6 @@
 // IIFE To not expose the scope
 (function () {
-    const SUBMIT_ENDPOINT = '/cat'
+    const SUBMIT_ENDPOINT = 'https://realtime-moderation.herokuapp.com/cat'
 
     // Declaring constants related to Pusher, neatly
     const APP_KEY = 'fb469c3b79cf2998b305'
