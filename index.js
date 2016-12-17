@@ -4,6 +4,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
 
 const identifyCatImage = require('./clarifai')
 const pusherApp = require('./pusher')
@@ -25,6 +26,10 @@ if (NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
+// Doing CORS like this is not safe in data sensitive websites,
+// You should specify the origin here, which I haven't done
+app.use(cors())
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -43,6 +48,7 @@ app.use(express.static('./public'))
  * The response for every request is 200,
  * Clarifai related moderation data is sent using Pusher
  */
+// Add POST route here
 app.post('/cat', function (req, res, next) {
     const imageUrl  = req.body.url
     const addedAt   = (new Date ()).toISOString()
