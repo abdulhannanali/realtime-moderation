@@ -1,0 +1,12 @@
+.emoji {
+    width: 48px;
+    height: 48px;
+}
+
+.display-image {
+    text-align: center;
+}
+
+.green-dot {
+    color: green;
+}
