@@ -81,25 +81,29 @@ events using Pusher, as Pusher doesn't let us trigger events from client side (a
 
 #### Client Side Functionalities
 
-Pusher JavaScript API provides us with abilities to bind to events on specific channels, making true real time applications possible, and in a Component based site, we can have different components subscribed to different channels however, in this client side application, till now, the Client Side provides with the following functions 
+Pusher JavaScript API provides us with abilities to bind to events on specific channels, making true real time applications possible, and in a Component based site, we can have different components subscribed to different channels, the client side provides with the following functions for the moment
 
-- Let the user send a `POST` request to submit images to the Pusher
-- Provide the user with helpful feedback in the form of notifications and Cards,
+- Let the user send a `POST` request to submit images to the Pusher, the connection in Pusher is one way from Server to Client in Public Channels (we use these for Cat Channel), we can send requests in the form of REST, for Client to Server commmunication. 
+- Provide the user with helpful feedback in the form of notifications and Cards
 - Bind to the Pusher events and receive data regarding the cats
 
 #### Future planned features
-This is just a first step in the realtime moderation applications, the functionality of this application can be extended in many creative ways, part of the reason, it doesn't have many features is, I intended for it to be a full fledge tutorial at first, but then changed it to a form of example, afraid of making it too complex than it should be. Some of the features I have on top of my mind are detailed blow, so if anyone wants to work on them, that'd be awesome.
+This is just a first step in the realtime moderation applications, the functionality of this application can be extended in many creative ways, part of the reason, it doesn't have many features is, I intended for this to be only limited to a tutorial at first, but then changed it to form of a demo application. Some of the features I have on top of my mind are detailed blow, so if anyone wants to work on them, that'd be awesome.
 
-##### - JavaScript Push Notifications
+##### JavaScript Push Notifications
 Push notifications are a crucial part of the Realtime application, and let's the application convey important events
-to the users, even when they are away from the application, Firebase Cloud Messaging (FCM) allows the users to send the push notifications in Chrome, even when they are not on the site. The push notifications for web applications can be implemented for realtime-moderation, implementation might get annoying, as a new cat image, can be sent very frequiently, but we can modify the server side to send the push notification once in a while in that case, instead of very frequently.
+to the users, even when they are away from the application, Firebase Cloud Messaging (FCM) allows the users to send the push notifications in Chrome, even when they are not on the site. The push notifications for web applications can be implemented for realtime-moderation, implementation might get annoying, as a new cat image, can be sent very frequently, but we can modify the server side to send the push notification once in a while in that case, instead of very frequently.
 
  
-##### - Multi Channel Support
-The multi channel support can allow us to filter, what type of image, we want to listen for depending on the channel and type of the event, increasing the usecases of this applications. One common flow through this, can be an `input` in order to enter concept and a `button`, so we can subscribe to the channel for a concept, when the button is pressed. 
+##### Multi Channel Support
+The multi channel support can allow us to filter through images with different concepts, we want to listen for depending on the channel and type of the event, increasing the usecases of this applications. One common flow through this, can be an `input` in order to enter concept and a `button`, so we can subscribe to the channel for a concept, when the button is pressed. 
 
 ##### Database persistence, for previous realtime data
-Database persistence, allows us to provide context to the users, that have missed the previous events, but just encountered this one event, One such use case can be to send the list of the previous images or atleast the last image, that was identified for instance as Cat, allowing us to expand the use cases, we already have. It's also really important, as users don't lose their entire realtime Twitter or Fb feed, once they go through it, it's there so they can come back.
+Database persistence, allows us to provide context to the users, especially to those who have missed the previous events, but just encountered this one event, One such use case can be to send the list of the previous images or atleast the last image, that was identified for instance as a Cat. It's important to maintain this history, as users don't lose their entire realtime Twitter or Fb feed, once they go through it.
+
+##### Provide more descriptive details, regarding the errors
+Providing more descriptive details about the errors happening in the Server using Pusher, allows us to keep the user
+better informed. Such as, in case the url is not valid and Clarifai responds with an error status code, we can display some descriptive message, instead of being ambiguous to the user who sent it, for others we don't even send this information.
 
 
 #### LICENSE
