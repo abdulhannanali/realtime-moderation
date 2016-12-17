@@ -11,7 +11,12 @@
  */
 
 const Pusher = require('pusher')
-const pusherConfig = require('config').pusher
+
+if (pusherConfig) {
+  const pusherConfig = require('config').pusher
+} else {
+  const pusherConfig = process.env
+}
 
 const pusher = new Pusher({
   appId: pusherConfig.appId,

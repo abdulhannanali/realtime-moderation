@@ -92,7 +92,7 @@ This is just a first step in the realtime moderation applications, the functiona
 
 ##### - JavaScript Push Notifications
 Push notifications are a crucial part of the Realtime application, and let's the application convey important events
-to the users, even when they are away from the application, Firebase Cloud Messaging (FCM) allows the users to send the push notifications in Chrome, even when they are not on the sites. The push notifications for web applications can be implemented for realtime-moderation, implementation might get annoying, as a new cat image, can be sent very frequiently, but we can modify the server side to send the push notification once in a while in that case, instead of very frequently.
+to the users, even when they are away from the application, Firebase Cloud Messaging (FCM) allows the users to send the push notifications in Chrome, even when they are not on the site. The push notifications for web applications can be implemented for realtime-moderation, implementation might get annoying, as a new cat image, can be sent very frequiently, but we can modify the server side to send the push notification once in a while in that case, instead of very frequently.
 
  
 ##### - Multi Channel Support

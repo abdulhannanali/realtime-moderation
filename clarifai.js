@@ -13,11 +13,16 @@
  * OMG! OMG! OMG! Awesome!
  */
 const Clarifai = require('clarifai')
-const config = require('config')
+
+if (process.env.NODE_ENV === 'development') {
+    const clarifaiConfig = require('config')
+} else {
+    const clarifaiConfig = process.env
+}
 
 const app = new Clarifai.App(
-    config.clarifai.clientId,
-    config.clarifai.clientSecret
+    clarifaiConfig.clientId,
+    clarifaiConfig.clientSecret
 )
 
 const conceptsForCat = ['cat']
