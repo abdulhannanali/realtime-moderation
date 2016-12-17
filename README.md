@@ -1,6 +1,6 @@
 # Realtime AI Moderation application with [Clarifai](https://clarifai.com) and [Pusher](https://pusher.com)
 
-## Reason behind this demo' existence (Feel free to skip)
+## Reason behind working on it (Feel free to skip)
 
 Realtime Web is becoming more mainstream, most of the major browsers
 now have a good support for [**WebSockets**](https://goo.gl/fn6c2h), each and every day, 
@@ -36,6 +36,20 @@ pusher.trigger('cat_channel', 'new_cat', {
 
 ```
 
+On client side, we can subscribe to `cat_channel` and bind to `new_cat` event in order to make things simple for us
+
+```js
+// Subscribing to channel 
+const catChannel = pusher.subscribe('cat_channel')
+catChannel.bind('new_cat', function (eventData) {
+    // Do something with this data
+
+    // url of the new cat coming up
+    console.log(eventData.url)
+})
+
+```
+
 [Create an account](https://dashboard.pusher.com/accounts/sign_up) on Pusher, and make note of your `app_id`, `app_key` and `app_secret`, you'll need those later in the application, also checkout their [JavaScript Quick Start](https://pusher.com/docs/javascript_quick_start) guide to get a better understanding of how we do things with Pusher.
 
 ### Let's run the demo
@@ -44,11 +58,17 @@ Check out this demo's source code on this [repository](https://github.com/abdulh
 here, clone it on your computer and replace the placeholder keys in `config/default.yml`
 with your own keys from Clarifai and Pusher.
 
-Afterwards, run a `npm start` in order to start your application on the default PORT `3000` which can be changed from within the source code. 
+Afterwards, run a `npm start` in order to start your application on the default PORT `3000` which can be changed from within the source code. If you receive an error, check out your keys and refer **log** for more information. 
 
 
 ### Complete Architecture Overview
 ![Architecuture of Realtime Moderation Application](data/architecture.svg)
+
+#### Server Side Functionalities
+**TBD**
+
+#### Client Side Functionalities
+**TBD**
 
 #### LICENSE
 MIT License. See [LICENSE](LICENSE) for more details
