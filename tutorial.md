@@ -58,3 +58,5 @@ pusher.trigger('cat_channel', 'new_cat', {
 [Create an account](https://dashboard.pusher.com/accounts/sign_up) on Pusher, and make note of your `app_id`, `app_key` and `app_secret`, you'll need those later in the application, also checkout their [JavaScript Quick Start](https://pusher.com/docs/javascript_quick_start) guide to get a better understanding of how we do things with Pusher.
 
 ## Let's build
+
+adadsad
