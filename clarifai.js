@@ -39,7 +39,12 @@ function identifyCatImage (url) {
             // Storing the Array of concepts from the response in concepts
             const concepts = response.data.outputs[0].data.concepts
 
-            return concepts.some((concept) => conceptsForCat.indexOf(concept.name) !== -1) 
+            const isCat = concepts.some((concept) => conceptsForCat.indexOf(concept.name) !== -1)
+
+            return {
+                isCat,
+                concepts
+            } 
         })
 }
 
