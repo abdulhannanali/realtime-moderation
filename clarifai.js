@@ -13,12 +13,14 @@
  * OMG! OMG! OMG! Awesome!
  */
 const Clarifai = require('clarifai')
+let clarifaiConfig
 
 if (process.env.NODE_ENV === 'development') {
-    const clarifaiConfig = require('config')
+    clarifaiConfig = require('config').clarifai
 } else {
-    const clarifaiConfig = process.env
+    clarifaiConfig = process.env
 }
+
 
 const app = new Clarifai.App(
     clarifaiConfig.clientId,

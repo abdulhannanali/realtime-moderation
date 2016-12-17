@@ -11,11 +11,12 @@
  */
 
 const Pusher = require('pusher')
+let pusherConfig
 
 if (pusherConfig) {
-  const pusherConfig = require('config').pusher
+  pusherConfig = require('config').pusher
 } else {
-  const pusherConfig = process.env
+  pusherConfig = process.env
 }
 
 const pusher = new Pusher({
