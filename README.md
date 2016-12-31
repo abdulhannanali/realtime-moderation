@@ -1,5 +1,5 @@
 # Realtime AI Moderation application with [Clarifai](https://clarifai.com) and [Pusher](https://pusher.com)
-
+[![CircleCI](https://circleci.com/gh/abdulhannanali/realtime-moderation.svg?style=svg)](https://circleci.com/gh/abdulhannanali/realtime-moderation)
 ## Reason behind working on it (Feel free to skip)
 
 Realtime Web is becoming more mainstream, most of the major browsers
