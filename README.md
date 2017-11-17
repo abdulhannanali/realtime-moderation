@@ -1,4 +1,6 @@
 # Realtime AI Moderation application with [Clarifai](https://clarifai.com) and [Pusher](https://pusher.com)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/abdulhannanali/realtime-moderation.svg)](https://greenkeeper.io/)
 [![CircleCI](https://circleci.com/gh/abdulhannanali/realtime-moderation.svg?style=svg)](https://circleci.com/gh/abdulhannanali/realtime-moderation)
 ## Reason behind working on it (Feel free to skip)
 
